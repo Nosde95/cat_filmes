@@ -4,3 +4,9 @@
     margin-left: 30px;
     
 }
+#lista-filmes{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
