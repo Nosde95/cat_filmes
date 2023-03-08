@@ -1,15 +1,21 @@
 let inputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
+
+/*document.querySelector("d-flex").addEventListener('submit',(e)=>{
+    e.preventDefalut();
+});*/
 btnBuscarFilme.onclick=()=>{
     if(inputBuscarFilme.Value.length > 0){
-        fetch(" http://www.omdbapi.com/?i=tt3896198&apikey=2795314e"+inputBuscarFilme.value,{mode:"cors"})
+        fetch(" http://www.omdbapi.com/?"+inputBuscarFilme.value,{mode:"cors"})
         .then((resp)=>resp.json())
         .then((resp)=>{
             console.log(resp);
-        })
+        });
     }
+    console.log(resp);
     return false;
 }
+
 
 
 
