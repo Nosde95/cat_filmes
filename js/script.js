@@ -1,8 +1,12 @@
 let inputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
 btnBuscarFilme.onclick=()=>{
-    if(inputBuscarFilme.Value.length >0){
-        console.log(inputBuscarFilme.value);
+    if(inputBuscarFilme.Value.length > 0){
+        fetch(" http://www.omdbapi.com/?i=tt3896198&apikey=2795314e"+inputBuscarFilme.value,{mode:"cors"})
+        .then((resp)=>resp.json())
+        .then((resp)=>{
+            console.log(resp);
+        })
     }
     return false;
 }
@@ -42,4 +46,4 @@ let filme =new Filme(
     14,
     null
 );
-console.log(filme);
+console.log(filme);*/
