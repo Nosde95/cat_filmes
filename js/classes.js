@@ -24,4 +24,5 @@ class Filme {
         this.classificacao = classificacao;
         this.avaliacao = avaliacao;
     }
+
 }
