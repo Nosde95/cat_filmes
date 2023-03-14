@@ -3,14 +3,79 @@ let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
 
 btnBuscarFilme.onclick=()=>{
     if(inputBuscarFilme.value.length > 0){
+        let filmes = new Array();
         fetch("http://www.omdbapi.com/?apikey=2795314e&s="+inputBuscarFilme.value,{mode:"cors"})
         .then((resp)=>resp.json())
         .then((resp)=>{
-            console.log(resp);
+            resp.Search.forEach((item)=>{
+				console.log(item);
+				let filme=new Filme(
+					item.imdbID,
+					item.Title,
+					item.Year,
+					null,
+					null,
+					item.Cartaz,
+					null,
+					null,
+					null,
+					null,
+					null
+				);
+				filmes.push(filme);
+            });
+			listarFilmes(filmes);
         });
     }
     return false;
 }
+let genero = ["Ação","Aventura","Ficção cientifica"];
+
+let listarFilmes = async (filmes) => {
+	let listaFilmes = await document.querySelector("#lista-filmes");
+	listaFilmes.innerHTML = "";
+	console.log(listaFilmes);
+	if(filmes.length > 0) {
+		filmes.forEach(async(filme) => {
+			listaFilmes.appendChild(await filme.getCard());
+		});
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
