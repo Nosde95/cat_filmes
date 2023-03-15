@@ -45,27 +45,29 @@ let listarFilmes = async (filmes) => {
 		});
 	}
 }
+let detalhesFilme=async(id)=>{
+    fetch("http://www.omdbapi.com/?apikey=2795314e&s="+id)
+    .then((resp)=>resp.json())
+    .then((resp)=>{
+        resp.Search.forEach((item)=>{
+            let filme=new Filme(
+                item.imdbID,
+                item.Title,
+                item.Year,
+                null,
+                null,
+                item.Poster,
+                null,
+                null,
+                null,
+                null,
+                null
+            );
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        console.log(resp)
+    })
+}
 
 
 
