@@ -15,7 +15,7 @@ btnBuscarFilme.onclick=()=>{
 					item.Year,
 					null,
 					null,
-					item.Cartaz,
+					item.Poster,
 					null,
 					null,
 					null,
@@ -34,10 +34,14 @@ let genero = ["Ação","Aventura","Ficção cientifica"];
 let listarFilmes = async (filmes) => {
 	let listaFilmes = await document.querySelector("#lista-filmes");
 	listaFilmes.innerHTML = "";
-	console.log(listaFilmes);
+	//console.log(listaFilmes);
 	if(filmes.length > 0) {
 		filmes.forEach(async(filme) => {
+            console.log(filme);
 			listaFilmes.appendChild(await filme.getCard());
+            filme.getBtnDetalhes().onclick=()=>{
+                detalhesFilme(filme.id);
+            }
 		});
 	}
 }

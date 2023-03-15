@@ -6,6 +6,10 @@
 .navbar-brand img {
 	height: 5vh;
 }
+.card-img-topz{
+    width: 250px;
+    height: 400px;
+}
 .card{
     text-align: center;
     margin-top: 20px;
