@@ -68,7 +68,7 @@ class Filme {
     getBtnDetalhes = () => {
         return this.btnDetalhes;
     }
-    getDetalhesCard = async () => {
+    getDetalhesCard = () => {
         let cardDetalhe = document.createElement("div");
         cardDetalhe.setAttribute("class", "card");
         let cardPoster = document.createElement("img");
@@ -82,13 +82,8 @@ class Filme {
 
         return detalhesCard;
 
-    }
-
-
-    
-    
+    }    
 }
-
 let genero = ["Ação", "Aventura", "Ficção cientifica"];
 
     let listarFilmes = async (filmes) => {
@@ -97,7 +92,7 @@ let genero = ["Ação", "Aventura", "Ficção cientifica"];
         //console.log(listaFilmes);
         if (filmes.length > 0) {
             filmes.forEach(async (filme) => {
-                console.log(filme);
+                //console.log(filme);
                 listaFilmes.appendChild(await filme.getCard());
                 filme.getBtnDetalhes().onclick = () => {
                     detalhesFilme(filme.id);
