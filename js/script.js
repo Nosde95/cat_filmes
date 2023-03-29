@@ -97,7 +97,9 @@ function salvarFilme(filme){
 	}else{
 		filmes=[filme];
 	}
-	localStorage("filmesFavoritos",JSON.stringify(filmes));
+	filmes=JSON.stringify(filmes);
+	localStorage.setItem("filmesFavoritos",filmes);
+	
 }
 
 function listarFavoritos(){
