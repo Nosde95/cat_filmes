@@ -17,7 +17,7 @@ class Filme {
         this.ano = ano;
         this.genero = genero;
         this.duracao = duracao,
-            this.sinopse = sinopse;
+        this.sinopse = sinopse;
         this.cartaz = cartaz;
         this.direcao = direcao;
         this.elenco = elenco;
@@ -68,60 +68,25 @@ class Filme {
     getBtnDetalhes = () => {
         return this.btnDetalhes;
     }
-    getDetalhesCard = () => {
-        let cardDetalhe = document.createElement("div");
-        cardDetalhe.setAttribute("class", "card");
-        let cardPoster = document.createElement("img");
-        cardPoster.setAttribute("class", "card-img-top");
-        cardPoster.setAttribute("src", this.cartaz);
-        let cardSinopse = document.createElement("p");
-        cardSinopse.document.createTextNode(this.sinopse)
+    
+    getDetalhesFilme = () => {
+        const cardDetalhes = `<div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${this.cartaz}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">${this.titulo}</h5>
+                        <p class="card-text">${this.sinopse}</p>
+                        <p class="card-text"><small class="text-muted">Last updated 13 mins ago</small></p>
+                        <button id="btnSalvar">Salvar<button>
+                        <button id="btnFechar">Fechar<button>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        return cardDetalhes
+    }
 
-        cardDetalhe.appendChild(cardPoster)
-        cardDetalhe.appendChild(cardSinopse)
-
-        return detalhesCard;
-
-    }    
 }
-let genero = ["Ação", "Aventura", "Ficção cientifica"];
-
-    let listarFilmes = async (filmes) => {
-        let listaFilmes = await document.querySelector("#lista-filmes");
-        listaFilmes.innerHTML = "";
-        //console.log(listaFilmes);
-        if (filmes.length > 0) {
-            filmes.forEach(async (filme) => {
-                //console.log(filme);
-                listaFilmes.appendChild(await filme.getCard());
-                filme.getBtnDetalhes().onclick = () => {
-                    detalhesFilme(filme.id);
-                }
-            });
-        }
-    }
-    let detalhesFilme = async (id) => {
-        fetch("http://www.omdbapi.com/?apikey=2795314e&s=" + id)
-            .then((resp) => resp.json())
-            .then((resp) => {
-                let detalhes = new Filme(
-                    resp.imdbID,
-                    resp.Title,
-                    resp.Year,
-                    resp.Genre,
-                    resp.Runtime,
-                    resp.Poster,
-                    resp.Plot,
-                    resp.Director,
-                    resp.Actors,
-                    resp.imdbRating,
-                    resp.imdbVotes
-                );
-
-
-
-                console.log(resp);
-            });
-        getDetalhesCard(detalhes);
-
-    }
