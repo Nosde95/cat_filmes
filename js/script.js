@@ -79,6 +79,15 @@ let detalhesFilme = async (id) => {
 		}
         document.querySelector("#btnSalvar").onclick=()=>{
 			salvarFilme(filme);
+			document.querySelector("#lista-filmes").style.display = "none";
+			document.querySelector("#mostrar-filme").innerHTML="";
+        	document.querySelector("#mostrar-filme").style.display = "flex";
+		}
+		document.querySelector("#btnRemove").onclick=()=>{
+			removerFilme(filme);
+			document.querySelector("#lista-filmes").style.display = "none";
+			document.querySelector("#mostrar-filme").innerHTML="";
+        	document.querySelector("#mostrar-filme").style.display = "flex";
 		}
 		
         document.querySelector("#lista-filmes").style.display = "none";
@@ -122,4 +131,18 @@ function listarFavoritos(){
 		filmes.push(filme);
 	});
 	listarFilmes(filmes);
+}
+function removerFilme(filme){
+	let filmesString=localStorage.getItem('filmesFavoritos');
+	let filmes=null;
+	if(filmesString){
+		filmes=JSON.parse(filmesString);
+		filmes.push(filme);
+		
+	}else{
+		filmes=[filme];
+	}
+	filmes=JSON.stringify(filmes);
+	localStorage.removeItem("filmesFavoritos",filmes);
+	
 }

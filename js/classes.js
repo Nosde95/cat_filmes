@@ -81,6 +81,7 @@ class Filme {
                         <p class="card-text">${this.sinopse}</p>
                         <p class="card-text"><small class="text-muted">Last updated 13 mins ago</small></p>
                         <button id="btnSalvar">Salvar<button>
+                        <button id="btnRemove">Remover<button>
                         <button id="btnFechar">Fechar<button>
                         </div>
                     </div>
